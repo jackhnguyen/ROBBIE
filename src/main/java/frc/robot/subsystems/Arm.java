@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
   /** Creates a new Arm. */
-  private CANSparkMax m_rightMotor = new CANSparkMax(6, MotorType.kBrushless);
-  private CANSparkMax m_leftMotor = new CANSparkMax(7, MotorType.kBrushless);
+  private CANSparkMax m_rightMotor = new CANSparkMax(5, MotorType.kBrushless);
+  private CANSparkMax m_leftMotor = new CANSparkMax(6, MotorType.kBrushless);
   private SparkMaxAbsoluteEncoder m_absoluteEncoder = m_leftMotor.getAbsoluteEncoder(Type.kDutyCycle);
   //uses an absolute encoder
   public Arm() {
