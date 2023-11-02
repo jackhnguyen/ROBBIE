@@ -40,7 +40,7 @@ public class DriveTrain extends SubsystemBase {
     // Subsystem::RunOnce implicitly requires `this` subsystem.
     return run(
         () -> {
-          m_dt.arcadeDrive(xspeed, yspeed);
+          m_dt.arcadeDrive(xspeed*0.2, yspeed*0.2);
         });
   }  
   public void arcadeDrive(double xspeed, double yspeed) {

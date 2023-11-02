@@ -9,6 +9,8 @@ import frc.robot.commands.Autos;
 import frc.robot.commands.Drive;
 import frc.robot.commands.Foward;
 import frc.robot.commands.PIDFoward;
+import frc.robot.commands.Reverse;
+import frc.robot.commands.Rotate;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.DriveTrain;
@@ -31,14 +33,16 @@ public class RobotContainer {
   private final UpperArm m_UpperArm = new UpperArm();
   private final Claw m_claw = new Claw();
   private final ExampleSubsystem m_ExampleSubsystem = new ExampleSubsystem();
+  //Commands
+  
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
-
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
+    m_dt.setDefaultCommand(new Drive(m_dt, m_driverController.getLeftY(), 0));
     
   }
 
@@ -61,17 +65,19 @@ public class RobotContainer {
     //b and a no work
     m_driverController.b().whileTrue(m_arm.lift());
     m_driverController.a().whileTrue(m_arm.drop());
-    //x and y work
+    //x and y work but opposite LMAOOO
     m_driverController.x().whileTrue(m_UpperArm.Extend());
     m_driverController.y().whileTrue(m_UpperArm.Retract());
     //no work
-    m_driverController.button(5).whileTrue(m_claw.Clasp());
+    m_driverController.button(7).whileTrue(m_claw.Clasp());
+    m_driverController.button(8).whileTrue(m_claw.Open());
     //WORKS
     m_driverController.button(6).onTrue(new Foward(m_dt, 5));
+    m_driverController.button(5).onTrue(new Reverse(m_dt, 5));
+    m_driverController.button(9).onTrue(new Rotate(m_dt, 5));
     //doesn't work
-    m_driverController.button(7).onTrue(new PIDFoward(m_dt, 120));
+    // m_driverController.button(9).onTrue(new PIDFoward(m_dt, 120));
     // m_dt.setDefaultCommand(m_dt.limitedArcadeDriveCommand(m_driverController.getLeftY(), m_driverController.getRightX()));
-    m_dt.setDefaultCommand(new Drive(m_dt, m_driverController.getLeftY(), m_driverController.getRightX()));
   }
 
   /**

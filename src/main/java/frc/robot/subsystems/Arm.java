@@ -10,6 +10,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -19,6 +20,8 @@ public class Arm extends SubsystemBase {
   private CANSparkMax m_leftMotor = new CANSparkMax(6, MotorType.kBrushless);
   private SparkMaxAbsoluteEncoder m_absoluteEncoder = m_leftMotor.getAbsoluteEncoder(Type.kDutyCycle);
   //uses an absolute encoder
+  //0.255 is high
+  //0.6 is low
   public Arm() {
     m_rightMotor.setInverted(true);
     
@@ -46,5 +49,6 @@ public class Arm extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Abs Encoder: ", m_absoluteEncoder.getPosition());
   }
 }

@@ -8,11 +8,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 
-public class Foward extends CommandBase {
+public class Rotate extends CommandBase {
   private DriveTrain m_dt;
   private int m_distance;
   /** Creates a new Foward. */
-  public Foward(DriveTrain dt, int distance) {
+  public Rotate(DriveTrain dt, int distance) {
     m_dt = dt;
     m_distance = distance;
     addRequirements(dt);
@@ -28,7 +28,7 @@ public class Foward extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_dt.arcadeDrive(0.2, 0);
+    m_dt.arcadeDrive(0, 0.2);
   }
 
   // Called once the command ends or is interrupted.

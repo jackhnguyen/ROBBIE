@@ -29,7 +29,7 @@ public class Drive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_dt.arcadeDrive(tangentialSpeed, rotateSpeed);
+    m_dt.arcadeDrive(tangentialSpeed*0.2, rotateSpeed*0.2);
   }
 
   // Called once the command ends or is interrupted.

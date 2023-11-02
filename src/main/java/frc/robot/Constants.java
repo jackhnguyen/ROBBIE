@@ -18,7 +18,7 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
   }
   public static class ArmConstants{
-    public static final double kArmSpeed = 0.5;
+    public static final double kArmSpeed = 0.1;
     public static final double kUpperArmSpeed = 0.5;
   }
   public static class DTConstants{

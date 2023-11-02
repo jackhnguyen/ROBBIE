@@ -22,6 +22,14 @@ public class Claw extends SubsystemBase {
           m_pneumatics.set(Value.kForward);
         });
   }
+  public CommandBase Open() {
+    // Inline construction of command goes here.
+    // Subsystem::RunOnce implicitly requires `this` subsystem.
+    return run(
+        () -> {
+          m_pneumatics.set(Value.kReverse);
+        });
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
