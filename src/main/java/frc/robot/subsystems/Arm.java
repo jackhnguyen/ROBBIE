@@ -26,25 +26,22 @@ public class Arm extends SubsystemBase {
     m_rightMotor.setInverted(true);
     
   }
-  public CommandBase lift() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return run(
-        () -> {
-          m_leftMotor.set(ArmConstants.kArmSpeed);
-          m_rightMotor.set(ArmConstants.kArmSpeed);
-        });
+  public void lift() {
+    m_leftMotor.set(ArmConstants.kArmSpeed);
+    m_rightMotor.set(ArmConstants.kArmSpeed);
   }
-  public CommandBase drop() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return run(
-        () -> {
-          m_leftMotor.set(-ArmConstants.kArmSpeed);
-          m_rightMotor.set(-ArmConstants.kArmSpeed);
-        });
+  public void drop() {
+    m_leftMotor.set(-ArmConstants.kArmSpeed);
+    m_rightMotor.set(-ArmConstants.kArmSpeed);
+  }
+  public void killMotors(){
+    m_leftMotor.set(0);
+    m_rightMotor.set(0);
   }
   
+  public double getAbsoluteEncoderPosition(){
+    return m_absoluteEncoder.getPosition();
+  }
 
   @Override
   public void periodic() {

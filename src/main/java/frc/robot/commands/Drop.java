@@ -4,40 +4,38 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Arm;
 
-public class Drive extends CommandBase {
-  /** Creates a new Drive. */
-  private DriveTrain m_dt;
-  private XboxController m_Controller;
-  public Drive(DriveTrain dt, XboxController ct) {
-    m_dt = dt;
-    m_Controller = ct;
+public class Drop extends CommandBase {
+  private Arm m_arm;
+  
+  /** Creates a new Lift. */
+  public Drop(Arm arm) {
+    m_arm = arm;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(dt);
+    addRequirements(arm);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    m_dt.resetEncoders();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_dt.arcadeDrive(-m_Controller.getLeftY()*0.3, -m_Controller.getRightX()*0.35);
+    m_arm.drop();
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_arm.killMotors();
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return (m_arm.getAbsoluteEncoderPosition() >= 0.6);
   }
 }

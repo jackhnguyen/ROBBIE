@@ -68,6 +68,6 @@ public class DriveTrain extends SubsystemBase {
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Encoder Value: ", getAverageDistance());
+    SmartDashboard.putNumber("Encoder Value: ", m_leftEncoder.getPosition());
   }
 }

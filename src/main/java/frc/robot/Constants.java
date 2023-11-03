@@ -28,7 +28,7 @@ public final class Constants {
     public static final int kRIGHT_MOTOR_ID_2 = 1;
 
     public static final int kWHEEL__DIAMETER_INCHES = 6;
-    public static final int kCOUNTS_PER_REV = 42;
+    public static final int kCOUNTS_PER_REV = 4096;
     public static final double kENCODER_COUNT_TO_INCHES = Math.PI*DTConstants.kWHEEL__DIAMETER_INCHES;
 
     public static final int kP = 0;
