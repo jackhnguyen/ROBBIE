@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Claw extends SubsystemBase {
   /** Creates a new Claw. */
-  private DoubleSolenoid m_pneumatics = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
+  private DoubleSolenoid m_pneumatics = new DoubleSolenoid(PneumaticsModuleType.REVPH, 0, 1);
   public Claw() {}
   public CommandBase Clasp() {
     // Inline construction of command goes here.

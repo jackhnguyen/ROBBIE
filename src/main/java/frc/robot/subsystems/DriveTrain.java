@@ -22,7 +22,9 @@ public class DriveTrain extends SubsystemBase {
   private CANSparkMax m_rightMaster = new CANSparkMax(DTConstants.kRIGHT_MOTOR_ID_1, MotorType.kBrushless);
   private CANSparkMax m_rightSlave1 = new CANSparkMax(DTConstants.kRIGHT_MOTOR_ID_2, MotorType.kBrushless);
   private DifferentialDrive m_dt = new DifferentialDrive(m_leftMaster, m_rightMaster);
-  private RelativeEncoder m_leftEncoder = m_leftMaster.getAlternateEncoder(Type.kQuadrature, DTConstants.kCOUNTS_PER_REV);
+  //change the slave and master if it works
+  private RelativeEncoder m_leftEncoder = m_leftSlave1.getAlternateEncoder(Type.kQuadrature, DTConstants.kCOUNTS_PER_REV);
+  //test anf change this after
   private RelativeEncoder m_rightEncoder = m_rightMaster.getAlternateEncoder(Type.kQuadrature, DTConstants.kCOUNTS_PER_REV);
   //encoder counts per rev 4096
   //uses an alternate cancoder
